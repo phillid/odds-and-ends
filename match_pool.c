@@ -45,5 +45,6 @@ int main(int argc, char **argv)
 		}
 		printf("%s %s\n", buffer, i < 0? "matches" : "doesn't match" );
 	}
+	free(local_pool);
 	return 0;
 }
