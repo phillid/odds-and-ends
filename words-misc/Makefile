@@ -1,3 +1,3 @@
 include config.mk
 
-all: match_pool
+all: match_pool permutations
