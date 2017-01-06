@@ -87,16 +87,17 @@ int main()
 	double ratio = 0;
 	int runs = 1000000;
 	int wins = 0;
+	int doors = 3;
 
 	srand(time(NULL));
 
 	/* "stick/stay/lazy" strategy */
-	wins = monty(3, runs, STRATEGY_STICK);
+	wins = monty(doors, runs, STRATEGY_STICK);
 	ratio = ((double)wins) / runs;
 	printf("Stick : Won %d of %d (%.5f) success\n", wins, runs, ratio);
 
 	/* "change" strategy */
-	wins = monty(3, runs, STRATEGY_CHANGE);
+	wins = monty(doors, runs, STRATEGY_CHANGE);
 	ratio = ((double)wins) / runs;
 	printf("Change: Won %d of %d (%.5f) success\n", wins, runs, ratio);
 
