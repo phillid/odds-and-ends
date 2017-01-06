@@ -40,7 +40,6 @@ enum Strategy {
 unsigned int monty(int door_count, unsigned long plays, enum Strategy strategy)
 {
 	unsigned int i = 0;
-	int door = 0;
 	unsigned int wins = 0;
 	int prize = -1;
 	int choice = -1;
