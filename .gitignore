@@ -1,4 +1,5 @@
 words-misc/match_pool
 words-misc/permutations
 monty/monty
+base64/base64
 *.o
