@@ -110,6 +110,10 @@ dump_tree(struct bnode *node) {
 
 int
 main(int argc, char **argv) {
+	/* look, ma! No hands! */
+	(void)argc;
+	(void)argv;
+
 	struct bnode a,b,c,d,e, o1,o2,o3,o4;
 
 /*	((1+2)/(3*(4-5))) */
