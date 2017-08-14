@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 enum operator {
 	OP_MULTIPLY,
@@ -56,6 +57,40 @@ evaluate(struct bnode* node) {
 }
 
 void
+generate_tree_perms(int depth, int decision_depth, struct bnode *node) {
+	if (depth == 0) {
+		node->operator = OP_IDENTITY;
+		node->value = rand()%20;
+		return ;
+	}
+	/* Hmmm */
+	struct bnode *children = NULL;
+	children = malloc(2*sizeof(children[0]));
+	children[0].left = NULL;
+	children[0].right = NULL;
+	children[1].left = NULL;
+	children[1].right = NULL;
+	node->left = &children[0];
+	node->right = &children[1];
+	node->operator = OP_ADD;
+	node->right->operator = OP_IDENTITY;
+	node->right->value = 999;
+
+/*	if (depth == 0 || decision_depth == 0) {
+		node->left->operator = OP_IDENTITY;
+		node->left->value = rand()%20;
+		node->right->operator = OP_IDENTITY;
+		node->right->value = rand()%20;
+		return;
+	}*/
+
+	if (depth == decision_depth)
+		generate_tree_perms(0, 0, node->right);
+
+	generate_tree_perms(depth-1, decision_depth, node->left);
+}
+
+void
 dump_tree(struct bnode *node) {
 	if (node->operator == OP_IDENTITY) {
 		printf("%d", node->value);
@@ -102,4 +137,11 @@ main(int argc, char **argv) {
 
 	dump_tree(&o4);
 	printf("\n = %f\n", evaluate(&o4));
+
+
+
+	struct bnode t;
+	t.operator = OP_ADD;
+	generate_tree_perms(3, 0, &t);
+	dump_tree(&t);
 }
